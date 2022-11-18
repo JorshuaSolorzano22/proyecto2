@@ -1,0 +1,2 @@
+Bienvenido al manual del usuario
+Presionando la opción 1 podrá acceder a la lista con la totalidad de los estudiantes.
