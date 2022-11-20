@@ -1,25 +1,39 @@
-
 package proyecto2;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+/**
+ * Hasta este punto se ha implementado la opción para cargar la lista y mostrar el manual de usuario 
+ * @author Jorshua Solórzano
+ */
 
 public class Proyecto2 {
     
     public static void main(String[] args) throws IOException {
-        LeerArchivos read = new LeerArchivos();
-        read.leer();
+       menu();
+        
+    }       
+
+    private static void menu() {
+     LeerArchivos read = new LeerArchivos();
+       
         int option;
-        option = Integer.parseInt(JOptionPane.showInputDialog(null, "Bienvenido al sistema\n" + "1. Ver la lista de estudiantes\n 2. Editar el archivo\n 3. Enviar por correo\n 4.Manual de usuario\n 4.Salir"));
+        option = Integer.parseInt(JOptionPane.showInputDialog(null, "Bienvenido al sistema\n" + "1. Ver la lista de estudiantes\n 2. Editar el archivo\n 3. Enviar por correo\n 4.Manual de usuario\n 5.Salir"));
         do{
             switch(option){
                 case 1:
-                  read.leer();
+                {
+                    try {
+                        read.leer();
+                        menu();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Proyecto2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 break;
+
                 
                 case 2:
                  
@@ -27,12 +41,16 @@ public class Proyecto2 {
                 case 3:
                 break;
                 case 4:
-                    read.manual();
-                break;
-                case 5:
+                    {
+                    try {
+                        read.manual();
+                        menu();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Proyecto2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 break;
             }
-        }while(option != 4);
-        
-    }       
+        }while(option != 5);
+    }
 }
