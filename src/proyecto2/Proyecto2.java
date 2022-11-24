@@ -17,8 +17,8 @@ public class Proyecto2 {
     }       
 
     private static void menu() {
-     LeerArchivos read = new LeerArchivos();
-       
+     ManejoDatos read = new ManejoDatos();
+      
         int option;
         option = Integer.parseInt(JOptionPane.showInputDialog(null, "Bienvenido al sistema\n" + "1. Ver la lista de estudiantes\n 2. Editar el archivo\n 3. Enviar por correo\n 4.Manual de usuario\n 5.Salir"));
         do{
@@ -36,8 +36,11 @@ public class Proyecto2 {
 
                 
                 case 2:
-                 
+                {
+                   read.EditFiles();
+                }
                 break;
+
                 case 3:
                 break;
                 case 4:
