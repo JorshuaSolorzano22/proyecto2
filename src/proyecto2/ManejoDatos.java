@@ -54,12 +54,9 @@ public class ManejoDatos {
 
         try {
             while ((data = myReader.readLine()) != null) {
-
                 System.out.println(data);
             }
-
             myReader.close();
-
         } catch (FileNotFoundException e) {
             System.out.println("A ocurrido un error");
             e.printStackTrace();
@@ -73,27 +70,20 @@ public class ManejoDatos {
             menu = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Que desea realizar con los grupos?\n"
                     + "1. Agregar estudiante\n 2. Ordenar lista de manera ascendente\n"
                     + "3. Ordenar lista de manera descendente\n 4. Generar grupos\n"
-                    + "5. Dividir el grupo\n 6. Eliminar estudiante"));
+                    + "5. Dividir el grupo\n 6. Eliminar estudiante \n 7. Salir"));
             switch (menu) {
                 case 1:
-                  try {
-                    FileWriter myWriter = new FileWriter("Lista.txt", true);
-                    myWriter.write(getCarnet());
-                    myWriter.write(",");
-                    myWriter.write(getName());
-                    myWriter.write(",");
-                    myWriter.write(getGender());
-                    myWriter.write(",");
-                    myWriter.write(getLocation());
-                    myWriter.write("\n");
-                    myWriter.close();
-
-                    JOptionPane.showMessageDialog(null, "Estudiante agregado con éxito");
-
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Error al agregar el estudiante");
-                    e.printStackTrace();
-                }
+                {
+    try {
+      FileWriter myWriter = new FileWriter("Lista.txt");
+      myWriter.write("Los archivos en Java pueden ser complicados, ¡pero son lo suficientemente divertidos!");
+      System.out.println("Escribió correctamente en el archivo.");
+      myWriter.close();
+    } catch (IOException e) {
+      System.out.println("A ocurrido un error.");
+      e.printStackTrace();
+    }
+  }
                 break;
                 case 2:
                     break;
@@ -103,15 +93,16 @@ public class ManejoDatos {
                     break;
                 case 5:
                     break;
+                case 6:
+                    break;   
             }
-        } while (menu != 6);
+        } while (menu != 7);
     }
 
     public void manual() throws FileNotFoundException, IOException {
         String data;
         BufferedReader myReader = new BufferedReader(new FileReader("Manual.txt"));
         File myObj = new File("Manual.txt");
-
         try {
             while ((data = myReader.readLine()) != null) {
                 System.out.println(data);
