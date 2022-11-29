@@ -16,7 +16,7 @@ public class Proyecto2 {
         
     }       
 
-    private static void menu() {
+    private static void menu() throws IOException {
      ManejoDatos read = new ManejoDatos();
       
         int option;

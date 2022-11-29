@@ -1,2 +1,3 @@
-Bienvenido al manual del usuario
+Bienvenido al manual del usuario, este manual tiene la finalidad de facilitar la navegabilidad en la aplicación
+y de esta forma mejorar la experiencia del usuario.
 Presionando la opción 1 podrá acceder a la lista con la totalidad de los estudiantes.

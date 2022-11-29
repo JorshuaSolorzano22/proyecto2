@@ -1,71 +1,51 @@
+
 package proyecto2;
 
-import java.io.File;  // Importa la clase File
-import java.io.FileNotFoundException;  // Importar esta clase para manejar errores
-import java.io.BufferedReader; // Importar la clase Scanner para leer archivos de texto
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Jorshua Solorzano
+ */
 public class ManejoDatos {
+    File archivo = new File("Lista.txt");
+    String carnet = " ";
+    String name = " ";
+    String gender = " ";
+    String location = " ";
+    PrintWriter linea;
+    
+    
+    
+//        public void leer() throws FileNotFoundException, IOException {
+//        String data;
+//        BufferedReader myReader = new BufferedReader(new FileReader("Lista.txt"));
+//        File myObj = new File("Lista.txt");
+//
+//        try {
+//            while ((data = myReader.readLine()) != null) {
+//                System.out.println(data);
+//            }
+//            myReader.close();
+//        } catch (FileNotFoundException e) {
+//            System.out.println("A ocurrido un error");
+//            e.printStackTrace();
+//        }
+//
+//    }
 
-    String carnet;
-    String name;
-    String gender;
-    String location;
-
-    public String getCarnet() {
-        return carnet;
-    }
-
-    public void setCarnet(String carnet) {
-        this.carnet = carnet;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void leer() throws FileNotFoundException, IOException {
-        String data;
-        BufferedReader myReader = new BufferedReader(new FileReader("Lista.txt"));
-        File myObj = new File("Lista.txt");
-
-        try {
-            while ((data = myReader.readLine()) != null) {
-                System.out.println(data);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("A ocurrido un error");
-            e.printStackTrace();
-        }
-
-    }
-
-    public void EditFiles() {
+    public void EditFiles() throws IOException {
         int menu;
+        
         do {
             menu = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Que desea realizar con los grupos?\n"
                     + "1. Agregar estudiante\n 2. Ordenar lista de manera ascendente\n"
@@ -74,16 +54,29 @@ public class ManejoDatos {
             switch (menu) {
                 case 1:
                 {
-    try {
-      FileWriter myWriter = new FileWriter("Lista.txt");
-      myWriter.write("Los archivos en Java pueden ser complicados, ¡pero son lo suficientemente divertidos!");
-      System.out.println("Escribió correctamente en el archivo.");
-      myWriter.close();
-    } catch (IOException e) {
-      System.out.println("A ocurrido un error.");
-      e.printStackTrace();
-    }
-  }
+                    try{
+               if(archivo.exists()){
+                   carnet = JOptionPane.showInputDialog(null, "Ingrese el carnet" 
+                   , "Solicitud de datos" , 3);
+                    name = JOptionPane.showInputDialog(null, "Ingrese el nombre" 
+                   , "Solicitud de datos" , 3);
+                     gender = JOptionPane.showInputDialog(null, "Ingrese el genero" 
+                   , "Solicitud de datos" , 3);
+                     location = JOptionPane.showInputDialog(null, "Ingrese la ubicacion" 
+                   , "Solicitud de datos" , 3);
+                   try (FileWriter escribir = new FileWriter(archivo, true)) {
+                       linea.print(carnet);
+                       linea.print(name);
+                       linea.print(gender);
+                       linea.print(location);
+                       linea.close();
+                   }
+               
+               }
+                  }catch (IOException ex) {
+                        Logger.getLogger(ManejoDatos.class.getName()).log(Level.SEVERE, null, ex);
+                       }  
+                }
                 break;
                 case 2:
                     break;
@@ -99,19 +92,18 @@ public class ManejoDatos {
         } while (menu != 7);
     }
 
-    public void manual() throws FileNotFoundException, IOException {
-        String data;
-        BufferedReader myReader = new BufferedReader(new FileReader("Manual.txt"));
-        File myObj = new File("Manual.txt");
-        try {
-            while ((data = myReader.readLine()) != null) {
-                System.out.println(data);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("A ocurrido un error");
-            e.printStackTrace();
-        }
-
-    }
-
+//    public void manual() throws FileNotFoundException, IOException {
+//        String data;
+//        BufferedReader myReader = new BufferedReader(new FileReader("Manual.txt"));
+//        File myObj = new File("Manual.txt");
+//        try {
+//            while ((data = myReader.readLine()) != null) {
+//                System.out.println(data);
+//            }
+//        } catch (FileNotFoundException e) {
+//            System.out.println("A ocurrido un error");
+//            e.printStackTrace();
+//        }
+//
+//    }
 }
