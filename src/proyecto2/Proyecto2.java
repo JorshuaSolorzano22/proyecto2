@@ -12,12 +12,11 @@ import javax.swing.JOptionPane;
 public class Proyecto2 {
     
     public static void main(String[] args) throws IOException {
-       menu();
-        
+       menu();   
     }       
 
     private static void menu() throws IOException {
-     ManejoDatos read = new ManejoDatos();
+     ManejoDatos manejo = new ManejoDatos();
       
         int option;
         option = Integer.parseInt(JOptionPane.showInputDialog(null, "Bienvenido al sistema\n" + "1. Ver la lista de estudiantes\n 2. Editar el archivo\n 3. Enviar por correo\n 4.Manual de usuario\n 5.Salir"));
@@ -25,19 +24,14 @@ public class Proyecto2 {
             switch(option){
                 case 1:
                 {
-                    try {
-                        read.leer();
-                        menu();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Proyecto2.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    
                 }
                 break;
 
                 
                 case 2:
                 {
-                   read.EditFiles();
+                   manejo.EditFiles();
                 }
                 break;
 
@@ -46,7 +40,7 @@ public class Proyecto2 {
                 case 4:
                     {
                     try {
-                        read.manual();
+                        manejo.manual();
                         menu();
                     } catch (IOException ex) {
                         Logger.getLogger(Proyecto2.class.getName()).log(Level.SEVERE, null, ex);

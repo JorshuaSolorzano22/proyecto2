@@ -1,3 +1,6 @@
-Bienvenido al manual del usuario, este manual tiene la finalidad de facilitar la navegabilidad en la aplicación
+Bienvenido al manual del usuario.
+Este manual tiene la finalidad de facilitar la navegabilidad en la aplicación
 y de esta forma mejorar la experiencia del usuario.
-Presionando la opción 1 podrá acceder a la lista con la totalidad de los estudiantes.
+Presionando la opción 1 podrá: 
+Verificar la existencia de un archivo para manipular y en caso de no existir, crear uno.
+Para crear un nuevo archivo es necesario modificar el nombre del archivo que está por defecto en la aplicación.
