@@ -29,6 +29,8 @@ public class Main {
                     + "1. Crear un archivo\n 2. Leer un archivo\n"
                     + "3. Editar un archivo\n 4. Eliminar un archivo "
                     + "\n 5. Manual del usuario \n 6. Salir"));
+            if (menu >= 7) 
+                        JOptionPane.showMessageDialog(null, "¡Indicación inválida!\n Opción inexistente.");
             switch (menu) {
                 case 1:
                     crearArchivo(path);
@@ -46,10 +48,12 @@ public class Main {
                                 + "1. Agregar estudiantes\n 2. Dividir la lista de estudiantes\n"
                                 + "3. Agrupar los estudiantes\n 4. Eliminar estudiantes "
                                 + "\n 5. Ordenar la lista de manera ascendente \n 6. Ordenar la lista de manera descendente "
-                                + "\n 7. Salir "));
+                                + "\n 7. Volver al menú principal "));
+                        if (menu2 >= 8) 
+                        JOptionPane.showMessageDialog(null, "¡Indicación inválida!\n Opción inexistente.");
                         switch (menu2) {
                             case 1:
-                                AgregarDatos agre = new AgregarDatos();
+                                ManejoDatos agre = new ManejoDatos();
                                 agre.add();
                                 break;
                             case 2:
@@ -59,7 +63,8 @@ public class Main {
                                 //Agrupar estudiantes
                                 break;
                             case 4:
-                                //Eliminar estudiantes
+                                ManejoDatos mD = new ManejoDatos();
+                                mD.eliminar();
                                 break;
                             case 5:
                                 //Ordenar la lista de manera ascendente
@@ -81,6 +86,7 @@ public class Main {
             }
 
         } while (menu != 6);
+        
     }
 
     public static void crearArchivo(Path path) {
