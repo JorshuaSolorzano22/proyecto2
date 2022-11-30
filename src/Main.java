@@ -25,9 +25,9 @@ public class Main {
         int menu;
         do {
             menu = Integer.parseInt(JOptionPane.showInputDialog(null, "Bienvenido a la base de datos de la Universidad de Costa Rica \n "
-                    + "¿Que desea realizar ?\n"
-                    + "1. Crear archivo\n 2. Leer archivo\n"
-                    + "3. Editar archivo\n 4. Eliminar archivo "
+                    + "¿Que desea ver o realizar ?\n"
+                    + "1. Crear un archivo\n 2. Leer un archivo\n"
+                    + "3. Editar un archivo\n 4. Eliminar un archivo "
                     + "\n 5. Manual del usuario \n 6. Salir"));
             switch (menu) {
                 case 1:

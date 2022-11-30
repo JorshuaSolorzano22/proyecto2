@@ -1,6 +1,38 @@
 Bienvenido al manual del usuario.
+
 Este manual tiene la finalidad de facilitar la navegabilidad en la aplicación
 y de esta forma mejorar la experiencia del usuario.
-Presionando la opción 1 podrá: 
-Verificar la existencia de un archivo para manipular y en caso de no existir, crear uno.
-Para crear un nuevo archivo es necesario modificar el nombre del archivo que está por defecto en la aplicación.
+
+A continuación, las indicaciones de cómo se utiliza la aplicación y que funciones tiene:
+
+La aplicación consiste en cargar un archivo con extensión .txt para poder llevar
+a cabo una serie de procedimientos que permiten el manejo de archivos de texto por
+medio de las técnicas CREAD o CRUD (Create, Read, Update and Delete) traducido
+al español (Crear, Leer, Actualizar y Borrar).
+
+Digitando la opción 1 podrá:
+Verificar la existencia de un archivo con extensión .txt para manipular y en caso
+de no existir, crear uno. Para crear un nuevo archivo es necesario modificar la ruta
+del archivo con extensión .txt que está por defecto en la aplicación.
+
+Digitando la opción 2 podrá:
+Ver en pantalla el archivo con extensión .txt, el cúal posee una lista con los datos
+de los estudiantes.
+
+Digitando la opción 3 podrá:
+Editar el archivo que seleccionó, las funciones que contiene esta son:
+1.Agregar estudiantes al archivo.
+2.Dividir la lista de estudiantes que posee el archivo con extensión .txt.
+3.Agrupar los estudiantes como el usuario desee.
+4.Eliminar estudiantes, mediante la indicación de la linea que sea de conveniencia.
+5.Ordenar la lista de estudiantes de manera ascendente por nombre o carné del estudiante.
+6.Ordenar la lista de estudiantes de manera descendente por nombre o carné del estudiante
+
+Digitando la opción 4 podrá:
+Eliminar del dispositivo el archivo con extensión .txt que está en uso.
+
+Digitando la opción 5 podrá:
+Acceder a este manual de usuario que podrá ser de gran utilidad.
+
+¡Disfrute de nuestra aplicación!
+											
