@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -100,22 +101,32 @@ public class Main {
         }
     }
 
-    public static String leerArchivo(String path) {
-        try {
-            FileReader reader = new FileReader(path);
-            BufferedReader buffer = new BufferedReader(reader);
+    public static String leerArchivo(String path) throws IOException {
+JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(fileChooser);
+        BufferedReader br = null;
+        FileReader fr = null;
 
-            String linea = buffer.readLine();
-            String texto = linea;
-            while (linea != null) {
-                linea = buffer.readLine();
-                if (linea != null) {
-                    texto = texto + "\n" + linea  ;
-                }
+        try {
+            String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+            fr = new FileReader(ruta);
+            br = new BufferedReader(fr);
+            String array[] = new String[3000];
+
+            String linea;
+            int numlinea = 0;
+            int estudianteNumero = 0;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
             }
-            return texto;
+        } catch (NullPointerException e) {
+            System.out.println("No se ha seleccionado ningún fichero");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al leer el archivo");
+            System.out.println(e.getMessage());
+        } finally {
+            if (br != null) {
+                br.close();
+            }
         }
         return null;
     }
