@@ -1,3 +1,5 @@
+package proyecto2;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -59,14 +61,17 @@ public class Main {
                                 //Agrupar estudiantes
                                 break;
                             case 4:
-                                ManejoDatos mD = new ManejoDatos();
-                                mD.eliminar();
+                                ManejoDatos delete = new ManejoDatos();
+                                delete.eliminar();
                                 break;
+
                             case 5:
-                                //Ordenar la lista de manera ascendente
+                                ManejoDatos ascen = new ManejoDatos();
+                                ascen.ascendente();
                                 break;
                             case 6:
-                                //Ordenar la lista de manera descendente
+                                ManejoDatos descen = new ManejoDatos();
+                                descen.descendente();
                                 break;
                         }
                     } while (menu2 != 7);

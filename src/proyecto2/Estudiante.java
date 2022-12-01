@@ -1,12 +1,7 @@
 package proyecto2;
 
-import java.io.File;  // Importa la clase File
-import java.io.FileNotFoundException;  // Importar esta clase para manejar errores
-import java.io.BufferedReader; // Importar la clase Scanner para leer archivos de texto
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import javax.swing.JOptionPane;
+
+
 
 public class Estudiante {
 
