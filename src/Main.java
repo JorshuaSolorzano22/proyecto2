@@ -2,14 +2,10 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,7 +24,7 @@ public class Main {
                     + "¿Que desea ver o realizar ?\n"
                     + "1. Crear un archivo\n 2. Leer un archivo\n"
                     + "3. Editar un archivo\n 4. Eliminar un archivo "
-                    + "\n 5. Manual del usuario \n 6. Salir"));
+                    + "\n 5. Manual del usuario \n 6. Salir de la aplicación"));
             if (menu >= 7) 
                         JOptionPane.showMessageDialog(null, "¡Indicación inválida!\n Opción inexistente.");
             switch (menu) {
@@ -38,7 +34,7 @@ public class Main {
                 case 2:
                     String lista = leerArchivo(path.toString());
                     if (lista != null) {
-                        JOptionPane.showMessageDialog(null, lista);
+                        System.out.println(lista);
                     }
                     break;
                 case 3:
@@ -86,7 +82,7 @@ public class Main {
             }
 
         } while (menu != 6);
-        
+      JOptionPane.showMessageDialog(null, "Muchas gracias por utilizar nuestra aplicación");
     }
 
     public static void crearArchivo(Path path) {
@@ -109,7 +105,7 @@ public class Main {
             while (linea != null) {
                 linea = buffer.readLine();
                 if (linea != null) {
-                    texto = texto + "\n" + linea + "\n";
+                    texto = texto + "\n" + linea  ;
                 }
             }
             return texto;

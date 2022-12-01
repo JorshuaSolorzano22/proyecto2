@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -44,7 +45,7 @@ public class ManejoDatos {
                 case 5:
                     break;
                 case 6:
-                    
+
                     break;
             }
         } while (menu != 7);
@@ -66,8 +67,8 @@ public class ManejoDatos {
                 try (FileWriter escribir = new FileWriter(archivo, true)) {
                     PrintWriter linea = new PrintWriter(escribir);
                     linea.close();
-                    agregarTexto(path.toString(), (carnet + "       ") + (name + "       ")
-                            + (gender + "       ") + (location + "       " + "\n"));
+                    agregarTexto(path.toString(), (carnet + "     ") + (name + "            ")
+                            + (gender + "           ") + (location + "       " + "\n"));
                     JOptionPane.showMessageDialog(null, "El estudiante fué agregado con éxito");
 
                 }
@@ -90,43 +91,19 @@ public class ManejoDatos {
         }
     }
 
-    public void eliminar() {
-        String lineToRemove = null;
+    public void eliminar() throws FileNotFoundException {
+      
+       try{
+       FileReader archivo = new FileReader("Lista.txt");
+       ArrayList<String> datos = new ArrayList<>();
+       datos.remove(1);
+       JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+       }catch(Exception e){
+       JOptionPane.showMessageDialog(null, "Error al eliminar estudiante del archivo");
+       }
+       
+        
+       
 
-        try {
-            File inFile = new File("Lista.txt");
-            if (!inFile.exists()) {
-                JOptionPane.showMessageDialog(null, "El archivo no existe");
-                return;
-            }
-            //Construya el nuevo archivo que luego será renombrado al nombre del archivo original.
-            File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
-            BufferedReader br = new BufferedReader(new FileReader("Lista.txt"));
-            PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
-            String line = null;
-            //Leer el archivo original y escribir en el nuevo
-            //a menos que el contenido coincida con los datos que se eliminarán.
-            while ((line = br.readLine()) != null) {
-                if (!line.trim().equals(lineToRemove)) {
-                    pw.println(line);
-                    pw.flush();
-                }
-            }
-            pw.close();
-            br.close();
-            //Eliminar el archivo original
-            if (!inFile.delete()) {
-                System.out.println("No se pudo eliminar el archivo");
-                return;
-            }
-            //Cambie el nombre del nuevo archivo al nombre de archivo que tenía el archivo original.
-            if (!tempFile.renameTo(inFile)) {
-                System.out.println("No se pudo cambiar el nombre del archivo");
-            }
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 }
