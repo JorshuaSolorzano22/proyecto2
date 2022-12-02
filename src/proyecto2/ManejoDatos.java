@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -22,54 +23,55 @@ import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Jorshua Solorzano
+ * En esta clase se van a manipular los datos, teniendo acceso desde la opción de editar archivos del menú principal.
+ * @author Jorshua Solórzano
+ * @author César Pérez
  */
 public class ManejoDatos {
 
     public ManejoDatos() {
     }
 
-    static String muestras[];
-    static List<String> al = new ArrayList<String>();
-    static String arrDesordenado[];
+   
 
-    Path path = Paths.get("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista");
+    Path path = Paths.get("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
+    
 
+    //Para empezar tenemos el metodo EditFiles el cual sera el que plantea todo el menu de manejo de datos
+    //llamando en cada obcion a su debido metodo para posteriormente pasarlo a la clase main.
     public void EditFiles() throws IOException {
         int menu = 0;
         do {
             menu = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Que desea realizar?\n"
-                    + "1. Agregar estudiantes\n2. Dividir la lista de estudiantes\n"
-                    + "3. Agrupar los estudiantes\n4. Eliminar estudiantes "
-                    + "\n5. Ordenar la lista de manera ascendente\n6. Ordenar la lista de manera descendente "
-                    + "\n7. Volver "));
+                    + "1. Agregar estudiantes\n2. Agrupar los estudiantes\n"
+                    + "3. Eliminar estudiantes "
+                    + "\n4. Ordenar la lista de manera ascendente\n5. Ordenar la lista de manera descendente "
+                    + "\n6. Volver al menú principal"));
             switch (menu) {
                 case 1:
                     AddStudent();
                     break;
                 case 2:
-                    GroupStudents divArchiv = new GroupStudents();
-                    divArchiv.makeGroups();
+                    GroupStudents grups = new GroupStudents();
+                    grups.makeGroups();
                     break;
                 case 3:
+                    DeleteStudent("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
                     break;
                 case 4:
-                    deleteStudent("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
+                     AscendentOrder("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
                     break;
                 case 5:
-                    ascendente("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
-                    break;
-                case 6:
-                    descendente("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
+                    DescendentOrder("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
                     break;
             }
-        } while (menu != 7);
+        } while (menu != 6);
     }
 
+    //En el metodo AddStudent se van a pedir los datos del nuevo estudiante que se desea añadir
     public void AddStudent() throws IOException {
         File archivo = new File("Lista.txt");
-        ArrayList<Estudiante> students = this.capturarInfo();
+        ArrayList<Estudiante> students = this.CaptureInfo();
 
         if (archivo.exists()) {
             String carnet = JOptionPane.showInputDialog(null, "Ingrese el carné",
@@ -80,15 +82,20 @@ public class ManejoDatos {
                     "Femenino o masculino");
             String location = JOptionPane.showInputDialog(null, "Ingrese la ubicación",
                     "Neilly");
+            //Mediante el .add se guardara la informacion para el nuevo estudiante, pasandola luego al metodo UpdateTxt para que se guarden dichos cambios
             students.add(new Estudiante(carnet, name, gender, location));
-            updateTxt("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt", students);
+            UpdateTxt("C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt", students);
         } else {
             JOptionPane.showMessageDialog(null, "Error al agregar estudiante, el archivo no existe");
         }
     }
 
-    public static void updateTxt(String path, ArrayList<Estudiante> students) {
+    //El metodo UdateTxt sera fundamental a la hora de añadir un nuevo estudiante, pues sera aca donde realmente se realice
+    //la actualizacion con los nuevos datos para posteriormente incorporarlos al arraylist.
+    //Pasara por parametros el path que es la ruta del archivo y el ArrayList que es fundamental
+    public static void UpdateTxt(String path, ArrayList<Estudiante> students) {
         try {
+            //Mediante el PrintWriter se leera el .txt y con su punero .append se realiza la actualizacion.
             PrintWriter writer = new PrintWriter(new FileWriter(path, true));
             writer.append(students.get(students.size() - 1).getCarnet() + "," + students.get(students.size() - 1).getName() + ","
                     + students.get(students.size() - 1).getGender() + "," + students.get(students.size() - 1).getLocation() + "\n");
@@ -97,24 +104,28 @@ public class ManejoDatos {
         }
     }
 
-    public ArrayList<Estudiante> capturarInfo() throws FileNotFoundException {
+    //Este metodo CaptureInfo retornara un ArrayList en el que se almacenaran todos los estudiantes de la lista
+    //almacenadolos por su carnet, nombre, genero y locacion.
+    public ArrayList<Estudiante> CaptureInfo() throws FileNotFoundException {
         File myObj = new File("Lista.txt");
         ArrayList<Estudiante> students = new ArrayList<>();
         BufferedReader br = null;
         FileReader fr = null;
-        String corte = ",";
+        String cut = ",";
         try {
             fr = new FileReader(myObj);
             br = new BufferedReader(fr);
-            String linea;
-            int contador = 0;
-            while ((linea = br.readLine()) != null) {
-                String[] estudiantesEnLista = linea.split(corte);
-                if (contador != 0) {
+            String line;
+            int container = 0;
+            while ((line = br.readLine()) != null) {
+                //Mediante los cortes establecidos se guardara la informacion en un costructor de la clase Estudiante,
+                // siendo todos estos guardados en el arraylist.
+                String[] estudiantesEnLista = line.split(cut);
+                if (container != 0) {
                     students.add(new Estudiante(estudiantesEnLista[0], estudiantesEnLista[1], estudiantesEnLista[2],
                             estudiantesEnLista[3]));
                 }
-                contador++;
+                container++;
             }
 
         } catch (IOException e) {
@@ -133,13 +144,16 @@ public class ManejoDatos {
                 System.out.println("Excepción cerrando: " + e.getMessage());
             }
         }
+        //Finalizando con el retorno del nuevo estudiante.
         return students;
     }
 
-    
-    public void deleteStudent(String path) throws FileNotFoundException, IOException {
-        ArrayList<Estudiante> students = capturarInfo();
+ //En este metodo se va a eliminar el estudiante que el contolodor desee mediane el numero que posea el estudiante en la lista. 
+    //Se va a pasar por parametro la ruta del archivo para efectos practicos
+    public void DeleteStudent(String path) throws FileNotFoundException, IOException {
+        ArrayList<Estudiante> students = CaptureInfo();
         int n = Integer.parseInt(JOptionPane.showInputDialog(null, "En que puesto de la lista se encuentra el estudiante a eliminar?"));
+        //Aqui es donde mediante el numero en la lista se eliminara un estudiante
         System.out.println("Eliminamos el elemento " + n + " del ArrayList: " + students.get(n - 1));
         students.remove(n - 1);
         FileWriter fichero = null;
@@ -149,6 +163,8 @@ public class ManejoDatos {
             pw = new PrintWriter(fichero);
             Iterator<Estudiante> it = students.iterator();
             while (it.hasNext()) {
+                //Se utilizo este while para actualizar el .txt con la eliminacion del estudiante
+                //Igualando la lista a un Iterator para recorrer una única interfaz iteradora
                 Estudiante elemento = it.next();
                 pw.println(elemento.getCarnet() + "," + elemento.getName() + "," + elemento.getGender() + "," + elemento.getLocation());
             }
@@ -165,10 +181,12 @@ public class ManejoDatos {
         }
     }
 
-    public void ascendente(String path) throws FileNotFoundException {
-        ArrayList<Estudiante> students = capturarInfo();
+    //El metodo AscendentOrder se empleara para ordenar la lista de manera ascendente por medio de los nombres
+    //de los estudiantes. Se va a pasar por parametro la ruta del archivo para efectos practicos 
+    public void AscendentOrder(String path) throws FileNotFoundException {
+        ArrayList<Estudiante> students = CaptureInfo();
         Comparator<Estudiante> comparador = Comparator.comparing(Estudiante::getName);
-
+        //Mediante el Comparator de van a comparar los nombres de los estudiantes para consiguientemente ordenarlos
         List<Estudiante> listaPrincipal = students.stream().sorted(comparador).collect(Collectors.toList());
         FileWriter fichero = null;
         PrintWriter pw = null;
@@ -177,8 +195,10 @@ public class ManejoDatos {
             pw = new PrintWriter(fichero);
             Iterator<Estudiante> it = listaPrincipal.iterator();
             while (it.hasNext()) {
-                Estudiante elemento = it.next();
-                pw.println(elemento.getCarnet() + "," + elemento.getName() + "," + elemento.getGender() + "," + elemento.getLocation());
+                //Se utilizo este while para actualizar el .txt con el nuevo orden de los estudiantes
+                //Igualando la lista a un Iterator para recorrer una única interfaz iteradora
+                Estudiante element = it.next();
+                pw.println(element.getCarnet() + "," + element.getName() + "," + element.getGender() + "," + element.getLocation());
             }
             JOptionPane.showMessageDialog(null, "¡Lista ordenada ascendentemente correctamente!");
         } catch (Exception e0) {
@@ -194,10 +214,13 @@ public class ManejoDatos {
         }
     }
 
-    public void descendente(String path) throws FileNotFoundException {
-        ArrayList<Estudiante> students = this.capturarInfo();
+    //El metodo DescendentOrder se empleara para ordenar la lista de manera descendente por medio de los nombres
+    //de los estudiantes. Se va a pasar por parametro la ruta del archivo para efectos practicos 
+    public void DescendentOrder(String path) throws FileNotFoundException {
+        ArrayList<Estudiante> students = this.CaptureInfo();
         Comparator<Estudiante> comparador = Comparator.comparing(Estudiante::getName).reversed();
-
+        //Mediante el Comparator de van a comparar los nombres de los estudiantes para consiguientemente ordenarlos
+        //el cambio se va a ver reflejado en el puntero .reversed() el cual invierte el orden
         List<Estudiante> listaPrincipal = students.stream().sorted(comparador).collect(Collectors.toList());
         FileWriter fichero = null;
         PrintWriter pw = null;
@@ -206,8 +229,10 @@ public class ManejoDatos {
             pw = new PrintWriter(fichero);
             Iterator<Estudiante> it = listaPrincipal.iterator();
             while (it.hasNext()) {
-                Estudiante elemento = it.next();
-                pw.println(elemento.getCarnet() + "," + elemento.getName() + "," + elemento.getGender() + "," + elemento.getLocation());
+                Estudiante element = it.next();
+                pw.println(element.getCarnet() + "," + element.getName() + "," + element.getGender() + "," + element.getLocation());
+                //Se utilizo este while para actualizar el .txt con el nuevo orden de los estudiantes
+                //Igualando la lista a un Iterator para recorrer una única interfaz iteradora
             }
             JOptionPane.showMessageDialog(null, "¡Lista ordenada descendentemente correctamente!");
         } catch (Exception e0) {
@@ -221,11 +246,5 @@ public class ManejoDatos {
                 e1.printStackTrace();
             }
         }
-        
-    }
-    private static Map<String, List<Estudiante>>getListas (List<Estudiante> list) {
-        
-        return null;
-        
     }
 }

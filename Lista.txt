@@ -1,14 +1,16 @@
-CXXXXX,Apellido 1 apellido2 nombre,Femenino o masculino,Neilly
-C20728,Arias Avalos James Kalith,M,Neilly
-C01148,Blanco Abarca Yery Gerardo,M, Neilly
-C21916,Castro Martinez Kevin Fabricio,M,San Vito
-C23782,Hernandez Rodriguez Tiffany Alexa,F,Neilly
-C23845,Herrera Lopez Diego Starlin,M,San Vito
-C25499,Navarro Hernandez Yordany,M,Golfito
-C25871,Perez Esquivel Cesar,M,Neilly
-C06390,Ramirez Vargas Andrey Jesus,M,San Vito
-C16598,Rodriguez Espinoza Ashly,F,Neilly
-C17413,Segura Castillo Jose Marlon,M,San Vito
-C27493,Sibaja Granados Kevin Josue,M,San Vito
-C27650,Solis Rodriguez Jose Pablo,M,Golfito
+C28623,Zapata Ortega Jefferson Jafet,M,San Vito
+C07831,Torres Lara Kevin Josue,M,Golfito
 C27666,Solorzano Martinez Jorshua,M,Neilly
+C27650,Solis Rodriguez Jose Pablo,M,Golfito
+C27493,Sibaja Granados Kevin Josue,M,San Vito
+C17413,Segura Castillo Jose Marlon,M,San Vito
+C16598,Rodriguez Espinoza Ashly,F,Neilly
+C06390,Ramirez Vargas Andrey Jesus,M,San Vito
+C25871,Perez Esquivel Cesar,M,Neilly
+C25499,Navarro Hernandez Yordany,M,Golfito
+C23845,Herrera Lopez Diego Starlin,M,San Vito
+C23782,Hernandez Rodriguez Tiffany Alexa,F,Neilly
+C22128,Chavarria Valdez Dilan Josue,M,Golfito
+C21916,Castro Martinez Kevin Fabricio,M,San Vito
+C20728,Arias Avalos James Kalith,M,Neilly
+CXXXXX,Apellido 1 apellido2 nombre,Femenino o masculino,Neilly

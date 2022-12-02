@@ -22,11 +22,15 @@ de los estudiantes.
 Digitando la opción 3 podrá:
 Editar el archivo que seleccionó, las funciones que contiene esta son:
 1.Agregar estudiantes al archivo.
-2.Dividir la lista de estudiantes que posee el archivo con extensión .txt.
-3.Agrupar los estudiantes como el usuario desee.
-4.Eliminar estudiantes, mediante la indicación de la linea que sea de conveniencia.
-5.Ordenar la lista de estudiantes de manera ascendente por nombre o carné del estudiante.
-6.Ordenar la lista de estudiantes de manera descendente por nombre o carné del estudiante
+Aca como su nombre lo dice se agregara un nuevo estudiante a la lista.
+2.Agrupar los estudiantes.
+Aca el manejador del sistema podra seleccionar de cuantas personas desea los grupos.
+3.Eliminar estudiante.
+Mediante el numero que posee el estudiante en la lista se le indica al sistema cual eliminar.
+4.Ordenar la lista de estudiantes de manera ascendente.
+Mediante el nombre de los estudiantes se le dara el orden a la lista de manera ascendente.
+5.Ordenar la lista de estudiantes de manera descendente.
+Mediante el nombre de los estudiantes se le dara el orden a la lista de manera descendente.
 
 Digitando la opción 4 podrá:
 Eliminar del dispositivo el archivo con extensión .txt que está en uso.

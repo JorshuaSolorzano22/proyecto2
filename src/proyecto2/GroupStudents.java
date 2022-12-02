@@ -20,24 +20,25 @@ import javax.swing.JOptionPane;
 public class GroupStudents {
 
     public void makeGroups() {
+        
         Scanner sc = new Scanner(System.in);
         String fileName = JOptionPane.showInputDialog(null, "Ingrese la ruta del archivo .txt que desea dividir \n "
                 + "Ejemplo: C:\\Users\\Jorshua Solorzano\\Documents\\NetBeansProjects\\proyecto2\\Lista.txt");
         String url = JOptionPane.showInputDialog(null, "Ingresa la ruta en donde se crearán los archivos .txt  \n "
                 + "Ejemplo: C:\\Users\\Jorshua\\Documents\\NetBeansProjects\\proyecto2");
+        
         /*Se pide la cantidad de estudiantes por grupo, yluego se hace la conversión de String a int para poder usar la palabra 
-        reservada "final".
-         */
+        reservada "final". */
         String SPLIT = JOptionPane.showInputDialog(null, "¿Cuantos estudiantes desea que tenga cada grupo?");
         int split = Integer.parseInt(SPLIT);
         final int div = split;
 
-        String sheetName = "";
         int counter = 1;
         int counterBook = 1;
-        FileReader fis = null;
+        String sheetName = "";
         BufferedReader br = null;
         BufferedWriter bw = null;
+        FileReader fis = null;
 
         try {
             File file = new File(fileName);
